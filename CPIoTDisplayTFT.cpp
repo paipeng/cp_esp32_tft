@@ -74,7 +74,9 @@ void CPIoTDisplayTFT::drawTextPixel(int x, int y, int width, int height, unsigne
   spr.setCursor(20, 40);
   spr.println("Hello World\n");
 
-  spr.pushImage(70,70,100,100, (const uint16_t*)textPixels);
+  spr.pushImage(70,70,10,10, (const uint16_t*)textPixels);
+  spr.pushImage(70,90,10,10, (const uint16_t*)textPixels);
+  spr.pushImage(70,110,10,10, (const uint16_t*)textPixels);
   
   spr.pushSprite(0, 0);
 
