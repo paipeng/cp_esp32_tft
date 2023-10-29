@@ -17,7 +17,7 @@ class CPIoTDisplayTFT {
     void updatePagerMessage(String sender, String receiver, String message, unsigned char* textPixels, int dataLen);
     void drawTextPixel(int x, int y, int width, int height, const uint16_t* textPixels);
 
-    void drawTest(const unsigned char* data, int dataLen);
+    void drawTest(const unsigned char* data, int dataLen, int textCount);
     
   private:
     TFT_eSPI tft;// = TFT_eSPI();              // Invoke library, pins defined in User_Setup.h

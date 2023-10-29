@@ -68,16 +68,20 @@ void CPIoTDisplayTFT::drawTextPixel(int x, int y, int width, int height, const u
   Serial.println("drawTextPixel end");
 }
 
-void CPIoTDisplayTFT::drawTest(const unsigned char* data, int dataLen) {
-  uint16_t *td = (uint16_t *)malloc(sizeof(uint16_t) * dataLen);
-  for (int i = 0; i < dataLen; i++) {
-    if (data[i] == 1) {
-      td[i] = 0xFFFF;
-    } else {
-      td[i] = 0x0;
+void CPIoTDisplayTFT::drawTest(const unsigned char* data, int dataLen, int textCount) {
+  int textDataLen = dataLen/textCount;
+  uint16_t *td = (uint16_t *)malloc(sizeof(uint16_t) * textDataLen);
+
+  for (int a = 0; a < textCount; a++) {
+    for (int i = 0; i < textDataLen; i++) {
+      if (data[i+ textDataLen * a] == 1) {
+        td[i] = 0xFFFF;
+      } else {
+        td[i] = 0x0;
+      }
     }
+    spr.pushImage(20 + a * 30, 100, 24, 24, (const uint16_t*)td);
   }
-  spr.pushImage(20, 100, 24, 24, (const uint16_t*)td);
   spr.pushSprite(0, 0);
   //drawTextPixel(20, 200, 24, 24, (const uint16_t*)td);
   free(td);
