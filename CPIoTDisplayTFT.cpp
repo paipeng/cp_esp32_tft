@@ -1,9 +1,7 @@
 
 #include "CPIoTDisplayTFT.h"
 // BASE64
-extern "C" {
-#include "crypto/base64.h"
-}
+
 
 CPIoTDisplayTFT::CPIoTDisplayTFT():tft(TFT_eSPI()), spr(&tft) {
   
@@ -36,7 +34,7 @@ void CPIoTDisplayTFT::init() {
   int y = tft.height() / 2 ;
 
   //tft.drawString("武汉", tft.width() / 2, tft.height() / 2);
-  //tft.drawString("LilyGo Camera Plus", tft.width() / 2, tft.height() / 2 + 20);
+  tft.drawString("LilyGo Camera Plus", tft.width() / 2, tft.height() / 2 + 20);
 
 }
 
